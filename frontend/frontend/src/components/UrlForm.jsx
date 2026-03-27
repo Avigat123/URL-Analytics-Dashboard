@@ -8,6 +8,7 @@ import TimelineChart from "./TimelineChart";
 import { getTimelineAnalytics } from "../services/api";
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import { BASE_URL } from "../services/api";
 
 function UrlForm() {
     const [url, setUrl] = useState("");
@@ -18,7 +19,7 @@ function UrlForm() {
     const containerRef = useRef(null);
     const handleSubmit = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/shorten", {
+            const res = await axios.post(`${BASE_URL}/shorten`, {
                 originalUrl: url
             });
 

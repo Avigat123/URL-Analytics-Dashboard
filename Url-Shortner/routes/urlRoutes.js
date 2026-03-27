@@ -26,7 +26,7 @@ router.post("/shorten", async (req, res) => {
         await newUrl.save();
 
         res.json({
-            shortUrl: `http://localhost:5000/${shortCode}`
+            shortUrl: `${process.env.BASE_URL}/${shortCode}`
         });
 
     } catch (err) {

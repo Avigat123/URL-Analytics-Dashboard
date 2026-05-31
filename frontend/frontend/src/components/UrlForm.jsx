@@ -151,7 +151,7 @@ function UrlForm() {
     // ── Derived metrics ───────────────────────────────────────────────────────
     const deviceCount = details ? Object.keys(details.devices || {}).length : 0;
     const browserCount = details ? Object.keys(details.browsers || {}).length : 0;
-    const countryCount = analytics?.countries ? Object.keys(analytics.countries).length : null;
+    const countryCount = details ? Object.keys(details.locations || {}).length : null;
 
     // ── Render ────────────────────────────────────────────────────────────────
     return (

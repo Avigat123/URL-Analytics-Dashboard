@@ -79,6 +79,7 @@ router.get("/analytics/:code/details", async (req, res) => {
         // device stats
         const devices = {};
         const browsers = {};
+        const locations = {};
 
         data.forEach((item) => {
             // device count
@@ -86,12 +87,17 @@ router.get("/analytics/:code/details", async (req, res) => {
 
             // browser count
             browsers[item.browser] = (browsers[item.browser] || 0) + 1;
+
+            // location count
+            const country = item.location || "Unknown";
+            locations[country] = (locations[country] || 0) + 1;
         });
 
         res.json({
             totalClicks,
             devices,
-            browsers
+            browsers,
+            locations
         });
 
     } catch (err) {
